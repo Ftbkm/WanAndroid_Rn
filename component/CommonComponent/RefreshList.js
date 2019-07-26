@@ -66,21 +66,15 @@ export default class KSRefreshList extends PureComponent<Props> {
                 ListFooterComponent={this._listFooter}
                 onEndReachedThreshold={global.PROPORTIONW(0.05)}
                 onEndReached={() => {
-                    console.log("111")
                     console.log("this.state.noMoreData:" + this.state.noMoreData)
                     console.log("this.state.footerRefresh:" + this.state.footerRefresh)
                     console.log("this.state.headerRefresh:" + this.state.headerRefresh)
                     if (this.state.noMoreData || this.state.footerRefresh || this.state.headerRefresh) return
-                    console.log("222")
                     this.setState({footerRefresh: true, page: this.state.page + 1}, () => {
-                        console.log("333")
                         this.props.footerRefresh(this.state.page, (dataArr) => {
-                            console.log("444")
                             if (!dataArr) return
-                            console.log("555")
                             let arr = this.state.dataArr
                             this.setState({dataArr: arr.concat(dataArr), footerRefresh: false}, () => {
-                                console.log("666")
                                 this.setState({noMoreData: dataArr.length < this.state.pageSize})
                             })
                         })
@@ -163,5 +157,6 @@ export default class KSRefreshList extends PureComponent<Props> {
         })
     }
 }
+
 
 AppRegistry.registerComponent('WanAndroid_Rn', () => WanAndroid_Rn);

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import queryString from 'query-string';
 import toast from "./toast";
 import lodash from 'lodash';
+import common from "./common";
+
 let request = {}
 
 
@@ -23,6 +25,7 @@ request.get = (url, params, token) => {
             // "X-Auth-Token": token,
         },
         timeout: 6000,
+        credentials: 'include',
     }
 
     console.log('URL:' + url)
@@ -39,7 +42,6 @@ request.get = (url, params, token) => {
                     toast.withText(responseJson.errorMsg);
                     reject(new Error(responseJson.errorMsg));
                 }
-                LoadingUtil.dismissLoading();
             })
             .catch((error) => {
                 console.log(url + ':' + error)
@@ -60,12 +62,12 @@ request.post = (url, body) => {
             Accept: "application/json",
             "Accept-language": "zh-CN",
             "Content-Type": "application/x-www-form-urlencoded",
-            // client: Platform.OS,
             // "X-Auth-Token": tokenStr,
         },
         timeout: 6000,
+        credentials: 'include',
     }, {
-        body: bodySplice(body)
+        body: bodySplice(body),
     })
     console.log('URL:' + url)
     console.log(map)
@@ -75,8 +77,13 @@ request.post = (url, body) => {
             .then((response) => response.json())
             .then((responseJson) => {
                 console.log("responseJson:", responseJson)
+                console.log("responseJson.cookie:", responseJson.cookie)
                 if (responseJson.errorCode == 0) {
                     resolve(responseJson)
+                } else if (responseJson.errorCode == -1001) {
+                    //登录
+                    toast.withText(responseJson.errorMsg);
+                    common.customPush(this, 'Login', null)
                 } else {
                     toast.withText(responseJson.errorMsg);
                     reject(new Error(responseJson.errorMsg));

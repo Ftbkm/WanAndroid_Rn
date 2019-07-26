@@ -13,6 +13,8 @@ const config = {
         PrHistoryList: 'project/list/',
         login: 'user/login',
         register: 'user/register',
+        collect: 'lg/collect/',
+        uncollect: 'lg/uncollect_originId/',
     },
 }
 

@@ -52,9 +52,12 @@ export default class Banner extends PureComponent<Props> {
         return itemArr
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            ImageArr: nextProps.ImageArr
-        })
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     if (JSON.stringify(nextProps) !== JSON.stringify(this.props)) {
+    //         this.setState({
+    //             ImageArr: nextProps.ImageArr
+    //         })
+    //     }
+    // }
+
 }
