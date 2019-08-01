@@ -24,7 +24,7 @@ export default class PnPages extends Component {
                          ItemSeparatorComponent={common.renderSeparator}
                          ref={refRefreshList => this.refRefreshList = refRefreshList}
                          renderItem={this._renderRowView}
-                         initialpage={1}
+                         initialpage={0}
                          pageSize={10}
                          headerRefresh={(page, callback) => {
                              this._getPnHistoryList(page, callback)

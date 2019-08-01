@@ -17,7 +17,7 @@ export default class Home extends Component<Props> {
 
     constructor() {
         super();
-        this.page = 1,
+        this.page = 0,
             this.state = {
                 bannerData: [],
                 dataArr: [],
@@ -40,7 +40,7 @@ export default class Home extends Component<Props> {
                          ItemSeparatorComponent={common.renderSeparator}
                          ref={refRefreshList => this.refRefreshList = refRefreshList}
                          renderItem={this._renderRowView}
-                         initialpage={1}
+                         initialpage={0}
                          pageSize={10}
                          headerRefresh={(page, callback) => {
                              this._getBanner();
@@ -75,7 +75,7 @@ export default class Home extends Component<Props> {
                         backgroundColor: global.WHITE
                     }}>
                         <View style={{flexDirection: 'row', marginTop: 5}}>
-                            <Text style={{flex: 1}}>{item.title}</Text>
+                            <Text style={{flex: 1, lineHeight: 20}}>{item.title}</Text>
                             <Text style={{marginBottom: 5}}>{common.timetrans(item.publishTime)}</Text>
                         </View>
 

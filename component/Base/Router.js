@@ -15,6 +15,8 @@ import Home from "../Main/Home/Home";
 import Web from "../CommonComponent/Web";
 import Login from '../Login/Login';
 import Register from '../Login/Register';
+import SystemList from '../Main/System/SystemList';
+import MyCollectList from '../Main/My/MyCollectList';
 import {appNavigation} from "../Common/common";
 
 const TabNavigator = createBottomTabNavigator({
@@ -163,6 +165,12 @@ const MainNavigator = createStackNavigator({
     Register: {
         screen: Register,
     },
+    SystemList: {
+        screen: SystemList,
+    },
+    MyCollectList: {
+        screen: MyCollectList,
+    }
 }, {
     // 导航栏风格通用属性
     defaultNavigationOptions: ({navigation, screenProps}) => ({

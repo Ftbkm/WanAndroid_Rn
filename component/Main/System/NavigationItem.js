@@ -2,6 +2,7 @@ import React, {Component, PureComponent} from 'react';
 import Swiper from 'react-native-swiper';
 import {AppRegistry, Platform, StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import Dimensions from 'Dimensions';
+import common from "../../Common/common";
 
 
 type Props = {};
@@ -9,6 +10,7 @@ export default class NavigationItem extends PureComponent<Props> {
     constructor(props) {
         super(props);
         this.state = {
+            id: 0,
             ItemArr: this.props.ItemArr
         }
     }
@@ -45,7 +47,7 @@ export default class NavigationItem extends PureComponent<Props> {
                 <TouchableOpacity activeOpacity={1}
                                   key={index}
                                   onPress={() => {
-                                      this._itemClick(index)
+                                      this._itemClick(item, index)
                                   }}
                 >
                     <Text style={{
@@ -63,8 +65,10 @@ export default class NavigationItem extends PureComponent<Props> {
         return itemArr
     }
 
-    _itemClick(index) {
-
+    _itemClick(item, index) {
+        common.customPush(this, 'SystemList', {
+            id: item.id
+        })
     }
 
 

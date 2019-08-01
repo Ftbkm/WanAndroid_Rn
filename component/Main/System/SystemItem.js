@@ -66,9 +66,9 @@ export default class SystemItem extends PureComponent<Props> {
     }
 
     _itemClick(item, index) {
-        // console.log("item.id:" + item.id)
-        //https://www.wanandroid.com/article/list/0/json?cid=60
-        common.customPush(this, 'Login', null)
+        common.customPush(this, 'SystemList', {
+            id: item.id
+        })
     }
 
     componentWillReceiveProps(nextProps) {

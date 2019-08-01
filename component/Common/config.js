@@ -14,7 +14,9 @@ const config = {
         login: 'user/login',
         register: 'user/register',
         collect: 'lg/collect/',
-        uncollect: 'lg/uncollect_originId/',
+        unCollect: 'lg/uncollect_originId/',
+        SystemList: 'article/list/',
+        myCollectList: 'lg/collect/list/',
     },
 }
 

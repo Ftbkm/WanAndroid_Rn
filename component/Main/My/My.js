@@ -47,8 +47,8 @@ export default class My extends Component<Props> {
                     uri={require('../../../Images/collection_red.png')}
                     title={'收藏'}
                     onClick={() => {
-                        // if (!common.checkLoginStatus(this)) return
-                        common.customPush(this, 'Login', null)
+                        if (!common.checkLoginStatus(this)) return
+                        common.customPush(this, 'MyCollectList', null)
                     }}
                 />
             </View>
